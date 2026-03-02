@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneClick</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="trail"></canvas>
+<div id="cursor"></div>
+
+<nav>
+  <div class="logo">OneClick</div>
+  <ul class="nav-links">
+    <li><a href="#tweaks">Tweaks</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-cta" id="navDownloadBtn">Download</button>
+    <button class="nav-cta nav-cta-ghost" id="navGithubBtn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      Source
+    </button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-orb orb-a"></div>
+  <div class="hero-orb orb-b"></div>
+  <div class="hero-orb orb-c"></div>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
+    <div class="version-tag"><span class="version-dot"></span>v8.3 — open source</div>
+    <h1><span class="g">One click.</span><br>Less bloat.</h1>
+    <p class="hero-sub">OneClick applies a curated set of Windows tweaks — disabling telemetry, trimming background services, and tuning system defaults. Free, no install required.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" id="heroDownloadBtn">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download
+      </button>
+      <button class="btn-secondary" id="heroGithubBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Source
+      </button>
+    </div>
+    <div class="disclaimer">
+      <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="rgba(255,190,40,0.6)" stroke-width="2" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+      <p><strong>Before you run it:</strong> OneClick makes broad system changes. Some tweaks may affect software that depends on Windows services being enabled. A restore point and registry backup are created automatically — but read the script before running it.</p>
+    </div>
+    <div class="meta-bar">
+      <div class="meta-item"><svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" opacity=".45"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>No install</div>
+      <div class="meta-item"><svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" opacity=".45"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>Fully reversible</div>
+      <div class="meta-item"><svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" opacity=".45"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>Windows 11 (21H2–26H1)</div>
+      <div class="meta-item"><svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" opacity=".45"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Free</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="tweaks">
+  <div class="wrap">
+    <div class="section-tag">What it touches</div>
+    <h2 class="section-h">System areas modified</h2>
+    <p class="section-sub">Each category groups related registry, service, and driver changes. The full diff is readable in the source.</p>
+    <div class="tweaks-grid" id="tweaksGrid">
+
+      <div class="tweak-card" data-index="0">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="var(--accent2)" stroke-width="1.4"><rect x="5" y="7" width="26" height="18" rx="3" stroke-opacity=".7"/><path d="M12 25v4M24 25v4M9 29h18" stroke-linecap="round"/><path d="M11 14h4M17 14h8M11 18h6M19 18h6" stroke-linecap="round" stroke-opacity=".4"/></svg>
+        <h3>Telemetry &amp; Diagnostics</h3>
+        <p>Disables DiagTrack, CEIP, Windows Error Reporting, autologgers, OOShutup10 config applied. Kills all feedback, activity history, and data collection registry keys.</p>
+        <div class="card-tag">~40 changes</div>
+      </div>
+
+      <div class="tweak-card" data-index="1">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="var(--accent)" stroke-width="1.4"><circle cx="18" cy="18" r="11" stroke-opacity=".7"/><path d="M18 7v4M18 25v4M7 18h4M25 18h4" stroke-linecap="round" stroke-opacity=".35"/><circle cx="18" cy="18" r="4" stroke-opacity=".9"/></svg>
+        <h3>Background Services</h3>
+        <p>Disables 150+ non-essential Windows services including SysMain, Xbox, Bluetooth, print spooler, and manufacturer-specific services (Intel, AMD, NVIDIA, Razer, Logitech, HP).</p>
+        <div class="card-tag">150+ services</div>
+      </div>
+
+      <div class="tweak-card" data-index="2">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="#a78bfa" stroke-width="1.4"><path d="M7 27L18 9l11 18H7z" stroke-opacity=".7" stroke-linejoin="round"/><path d="M18 17v5" stroke-linecap="round"/><circle cx="18" cy="25" r=".8" fill="#a78bfa"/></svg>
+        <h3>Privacy &amp; Bloat Removal</h3>
+        <p>Removes 55+ Microsoft store apps, Edge, OneDrive, Xbox bloat (22 files), Smartscreen, LockApp, and sync programs. Disables advertising ID, location, and content delivery.</p>
+        <div class="card-tag">55+ apps removed</div>
+      </div>
+
+      <div class="tweak-card" data-index="3">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="var(--accent2)" stroke-width="1.4"><rect x="7" y="13" width="22" height="14" rx="2" stroke-opacity=".7"/><path d="M13 13V10a5 5 0 0110 0v3" stroke-linecap="round" stroke-opacity=".5"/><circle cx="18" cy="20" r="2" stroke-opacity=".9"/><path d="M18 22v2.5" stroke-linecap="round"/></svg>
+        <h3>Visual &amp; System Settings</h3>
+        <p>Disables animations, transparency, Aero peek, taskbar search, widgets, and news. Sets taskbar left-aligned, enables right-click Win10 menu, applies performance-tuned visual settings.</p>
+        <div class="card-tag">25+ tweaks</div>
+      </div>
+
+      <div class="tweak-card" data-index="4">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="var(--accent)" stroke-width="1.4"><path d="M5 18h5l4-8 4 16 4-8 5 5 4-5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".85"/></svg>
+        <h3>Power, Kernel &amp; Latency</h3>
+        <p>Imports a custom Ultimate Performance power plan, disables hibernation and modern standby, sets BCDEdit timer/tick tweaks, priority separation, kernel heteroCPU policy, and runs SetTimerResolution at startup.</p>
+        <div class="card-tag">BCDEdit + kernel</div>
+      </div>
+
+      <div class="tweak-card" data-index="5">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="#4ade80" stroke-width="1.4"><rect x="5" y="10" width="26" height="16" rx="3" stroke-opacity=".5"/><path d="M5 16h26" stroke-opacity=".3"/><path d="M10 21h4M16 21h4M22 21h4" stroke-linecap="round" stroke-opacity=".6"/></svg>
+        <h3>GPU Tweaks</h3>
+        <p>Auto-detects Nvidia or AMD GPU and applies driver-level registry tweaks — disabling power gating, clock gating, ASPM, logging, and telemetry. Nvidia users also get Profile Inspector config and Control Panel restored.</p>
+        <div class="card-tag">Nvidia &amp; AMD</div>
+      </div>
+
+      <div class="tweak-card" data-index="6">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="var(--accent2)" stroke-width="1.4"><path d="M8 28V14l10-8 10 8v14" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".7"/><rect x="14" y="20" width="8" height="8" rx="1" stroke-opacity=".5"/><path d="M18 20v8" stroke-linecap="round" stroke-opacity=".3"/></svg>
+        <h3>Game &amp; App Priority</h3>
+        <p>Sets 49 games (CS2, Valorant, Fortnite, Apex, GTA V, Roblox, R6, CoD series and more) to High Performance GPU + High CPU priority. Sets background apps (Discord, Spotify, Steam) to power saving and low priority.</p>
+        <div class="card-tag">49 games</div>
+      </div>
+
+      <div class="tweak-card" data-index="7">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="#a78bfa" stroke-width="1.4"><path d="M10 10h16v10H10z" stroke-opacity=".6" stroke-linejoin="round"/><path d="M14 20v6M22 20v6M11 26h14" stroke-linecap="round" stroke-opacity=".5"/><path d="M14 14h8M14 17h5" stroke-linecap="round" stroke-opacity=".35"/></svg>
+        <h3>Drivers &amp; Optional Features</h3>
+        <p>Disables 70+ unnecessary kernel drivers (Bluetooth, Hyper-V, floppy, IR, wacom, etc.) and 80+ optional Windows features including SMB1, WSL, IIS, and media components.</p>
+        <div class="card-tag">70+ drivers</div>
+      </div>
+
+      <div class="tweak-card" data-index="8">
+        <div class="card-glow"></div>
+        <svg class="tc-icon" fill="none" viewBox="0 0 36 36" stroke="var(--accent)" stroke-width="1.4"><circle cx="18" cy="14" r="6" stroke-opacity=".7"/><path d="M8 29c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke-linecap="round" stroke-opacity=".5"/><path d="M18 14v4" stroke-linecap="round" stroke-opacity=".4"/></svg>
+        <h3>Startup &amp; Extras</h3>
+        <p>Disables all startup apps, sets Timer Resolution at boot, optional Search removal with OpenShell replacement, optional Process Destroyer, Device Manager tweaks, and network adapter power tweaks.</p>
+        <div class="card-tag">Optional extras</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" id="how" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-tag">How it works</div>
+    <h2 class="section-h">No magic.</h2>
+    <p class="section-sub">It's a script. Here's exactly what happens when you run it.</p>
+    <div class="steps">
+      <div class="step"><span class="step-num">01</span><div><h4>Checks version &amp; downloads tools</h4><p>Compares against the latest version on GitHub. Downloads the OneClick Tools folder (NSudo, Timer Resolution, Nvidia Profile Inspector, OOShutup10, power plans, etc.) before proceeding.</p></div></div>
+      <div class="step"><span class="step-num">02</span><div><h4>Creates restore point &amp; registry backup</h4><p>Offers a System Restore snapshot and a full registry export (HKLM, HKCU, HKCR, HKU, HKCC) to your OneClick Backup folder. Roll back any time from Windows Recovery or regedit.</p></div></div>
+      <div class="step"><span class="step-num">03</span><div><h4>Applies system, privacy &amp; visual tweaks</h4><p>Registry keys are written to disable telemetry, configure visual settings, and adjust service startup types. Removes bloat apps, Edge, OneDrive, Xbox files, and Smartscreen.</p></div></div>
+      <div class="step"><span class="step-num">04</span><div><h4>Disables services &amp; drivers</h4><p>150+ non-essential Windows services and 70+ unnecessary kernel drivers are disabled. Manufacturer services (Intel, AMD, NVIDIA, Razer) are also targeted. Re-enable any from services.msc.</p></div></div>
+      <div class="step"><span class="step-num">05</span><div><h4>GPU-specific tweaks</h4><p>Auto-detects your GPU vendor and applies driver registry tweaks. Nvidia users get Profile Inspector config. AMD users get clock/power gating disabled. Both paths are skippable.</p></div></div>
+      <div class="step"><span class="step-num">06</span><div><h4>Latency, power plan &amp; timer</h4><p>BCDEdit tweaks applied (no platform clock, no dynamic tick). Custom Ultimate Performance power plan imported. Priority separation, kernel timer policy, and SetTimerResolution configured.</p></div></div>
+      <div class="step"><span class="step-num">07</span><div><h4>Cleanup &amp; restart</h4><p>Temp files, prefetch, Discord/Spotify cache, and Windows Update logs cleared. Network stack flushed. Extras menu offered before final restart.</p></div></div>
+    </div>
+    <h3 style="font-size:1.15rem;font-weight:800;letter-spacing:-0.5px;margin:44px 0 18px">Requirements</h3>
+    <div class="req-grid">
+      <div class="req-card"><svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="var(--accent2)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg><div><h4>Admin rights</h4><p>Run as Administrator. The script modifies system-level registry keys, service states, and driver startup values.</p></div></div>
+      <div class="req-card"><svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="var(--accent)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h13.5A2.25 2.25 0 0121 5.25z"/></svg><div><h4>Windows 11 (21H2–26H1)</h4><p>Officially supported range. Unsupported versions can still continue with a warning. Windows Server editions are also handled.</p></div></div>
+      <div class="req-card warn"><svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="rgba(255,190,40,.65)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg><div><h4>Internet connection required</h4><p>Tools, Dcontrol, OpenShell, and the Nvidia Control Panel are downloaded at runtime from GitHub. Retry and manual fallbacks are provided if downloads fail.</p></div></div>
+      <div class="req-card warn"><svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="rgba(255,190,40,.65)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg><div><h4>Some things may break</h4><p>Wifi, Xbox Game Bar, Windows Search, and print features are affected. Process Destroyer (optional) requires a local account — running it on a Microsoft account causes a black screen on login.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="dl-section" id="download">
+  <div class="wrap">
+    <div class="dl-card">
+      <div>
+        <div class="section-tag" style="margin-bottom:10px">Download</div>
+        <h2>OneClick <span class="g">v8.3</span></h2>
+        <p>Single batch file. No installer, no account, no telemetry of our own. Run it as Administrator, follow the prompts, restart. Read the source before running — it's short.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="https://github.com/QuakedK/Oneclick/releases/download/DebloatTool/Oneclick-V8.3.bat" class="btn-primary" target="_blank" id="realDownloadBtn">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span id="dlText">Download</span>
+          </a>
+          <a href="https://github.com/QuakedK/Oneclick/releases/tag/DebloatTool" class="btn-secondary" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+        <div class="dl-meta">
+          <span>BATCH script</span><span>·</span><span>Run as Administrator</span><span>·</span><span>Internet required at runtime</span>
+        </div>
+      </div>
+      <div class="dl-right">
+        <div class="dl-shield">
+          <svg width="52" height="52" fill="none" viewBox="0 0 24 24" stroke="var(--accent)" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          <span>Open Source</span>
+        </div>
+      </div>
+    </div>
+    <div class="term" id="terminalEl">
+      <div class="term-line"><span class="t-info">→</span> Version check: <span class="t-ok">V8.3 — latest</span></div>
+      <div class="term-line"><span class="t-ok">✓</span> OneClick Tools downloaded</div>
+      <div class="term-line"><span class="t-ok">✓</span> Restore point created — <span class="t-info">Oneclick V8.3 Restore Point</span></div>
+      <div class="term-line"><span class="t-ok">✓</span> Registry backup created (HKLM, HKCU, HKCR, HKU, HKCC)</div>
+      <div class="term-line"><span class="t-ok">✓</span> Visual &amp; system settings applied</div>
+      <div class="term-line"><span class="t-ok">✓</span> Telemetry and autologgers removed — OOShutup10 applied</div>
+      <div class="term-line"><span class="t-ok">✓</span> 150+ services disabled</div>
+      <div class="term-line"><span class="t-ok">✓</span> 55+ Microsoft apps removed — Edge, OneDrive, Xbox bloat cleaned</div>
+      <div class="term-line"><span class="t-ok">✓</span> GPU tweaks applied (Nvidia Profile Inspector + driver registry)</div>
+      <div class="term-line"><span class="t-ok">✓</span> BCDEdit + kernel + priority separation configured</div>
+      <div class="term-line"><span class="t-ok">✓</span> 49 games set to High Performance GPU + High CPU priority</div>
+      <div class="term-line"><span class="t-ok">✓</span> Timer Resolution 0.500ms set at startup</div>
+      <div class="term-line"><span class="t-warn">!</span> Windows Search disabled — OpenShell installed as replacement</div>
+      <div class="term-line"><span class="t-ok">✓</span> Temp files, prefetch &amp; cache cleared — network stack flushed</div>
+      <div class="term-line"><span class="t-info">→</span> Done. Restart to apply all changes. <span class="t-blink">█</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>OneClick — open source, free forever</div>
+  <div style="display:flex;gap:24px"><a href="https://github.com/QuakedK/Oneclick" target="_blank">GitHub</a><a href="#">Changelog</a><a href="#">Issues</a></div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

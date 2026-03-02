@@ -138,13 +138,12 @@ nav{
 }
 .tweak-card:hover{background:var(--surface2)}
 
-/* glow layer that follows cursor */
+/* glow layer that follows cursor — always active, fades by proximity */
 .card-glow{
   position:absolute;inset:0;pointer-events:none;border-radius:0;
-  opacity:0;transition:opacity .3s;
-  background:radial-gradient(circle 160px at var(--mx,50%) var(--my,50%), rgba(108,99,255,.18), transparent 70%);
+  opacity:1;
+  background:radial-gradient(circle 200px at var(--mx,-9999px) var(--my,-9999px), rgba(108,99,255,.22), transparent 70%);
 }
-.tweak-card:hover .card-glow{opacity:1}
 
 /* rotating gradient border beam */
 .tweak-card::before{

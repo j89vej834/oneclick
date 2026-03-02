@@ -6,30 +6,36 @@
 (function titleTypewriter() {
   const frames = ['One Click.', 'Less Bloat.', 'More Performance.'];
   let fi = 0, ci = 0, deleting = false;
-  const base = '';
+
+  const TYPING_SPEED = 150;
+  const DELETE_SPEED = 80;
+  const PAUSE = 800;
 
   function tick() {
     const target = frames[fi];
+
     if (!deleting) {
       ci++;
-      document.title = base + target.slice(0, ci);
+      document.title = target.slice(0, ci);
       if (ci === target.length) {
         deleting = true;
-        setTimeout(tick, 1600);
+        setTimeout(tick, PAUSE);
         return;
       }
-} else {
-  ci--;
-  if (ci === 0) {
-    deleting = false;
-    fi = (fi + 1) % frames.length;
-    setTimeout(tick, 300);
-    return; // <-- returns before setting title to empty
-  }
-  document.title = base + target.slice(0, ci); // only set if ci > 0
+    } else {
+      ci--;
+      if (ci === 0) {
+        deleting = false;
+        fi = (fi + 1) % frames.length;
+        setTimeout(tick, 300);
+        return;
+      }
+      document.title = target.slice(0, ci);
     }
-    setTimeout(tick, deleting ? 55 : 100);
+
+    setTimeout(tick, deleting ? DELETE_SPEED : TYPING_SPEED);
   }
+
   tick();
 })();
 
@@ -46,12 +52,17 @@ const trail = [];
 const MAX = 42;
 let mx = -400, my = -400, cx = -400, cy = -400;
 let speed = 0, lastMx = -400, lastMy = -400;
+let lastMoveTime = Date.now();
+let idleTimer = null;
 let cursorHue = 260, targetHue = 260;
 const HUES = [260, 195, 230, 280, 195];
 let hueIdx = 0;
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
+  cursorEl.classList.remove('idle');
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => cursorEl.classList.add('idle'), 2000);
   const dx = mx - lastMx, dy = my - lastMy;
   speed = Math.sqrt(dx * dx + dy * dy);
   lastMx = mx; lastMy = my;
